@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Result</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-3">
+
+        <div class="row" th:if="${#lists.isEmpty(books)}">
+            <div class="col d-flex justify-content-center mt-5">
+                <h2>No books found that matches <span th:text="${title}"></span></h2>
+            </div>
+        </div>
+
+        <div class="row" th:unless="${#lists.isEmpty(books)}">
+            <div class="col d-flex justify-content-center mt-5">
+                <h2>Search result for <code th:text="${title}"></code></h2>
+            </div>
+
+            <div class="row d-flex justify-content-center mt-2">
+                <table class="table table-hover" th:each="d : ${books}">
+                    <ul>
+                        <a th:href="@{${d.workId}}"><li th:text="${d.title}"></li></a>
+                    </ul>
+                </table>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-start">
+            <a href="/" class="btn btn-warning">Home</a>
+        </div>
+    </div>
+</body>
+</html>

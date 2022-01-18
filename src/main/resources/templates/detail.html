@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row" th:if="${#lists.isEmpty(detail)}">
+            <div class="col d-flex justify-content-center mt-5">
+                <h2>No details found for <span th:text="${id}"></span></h2>
+            </div>
+        </div>
+
+        <div class="row" th:unless="${#lists.isEmpty(detail)}">
+            <table  class="table table-hover">
+                <td>
+                    <tr>
+                        <h3>Title: <span th:text="${detail.title}"></span></h3>
+                    </tr>
+                    <tr>
+                        <h3>Description: <span th:text="${detail.description}"></span></h3>
+                    </tr>
+                    <tr>
+                        <h3>Excerpt: <span th:text="${detail.excerpts}"></span></h3>
+                    </tr>
+                </td>
+            </table>
+        </div>
+        <div>
+            <div class="row d-flex justify-content-start">
+                <a href="/" class="btn btn-warning">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
